@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/transactions/user/${user.id}`);
+      const res = await axios.get(`https://nexus-lib-1.onrender.com/api/transactions/user/${user.id}`);
       setTransactions(res.data);
     } catch (err) {
       console.error(err);
@@ -39,7 +39,7 @@ export default function Dashboard() {
 
   const fetchNotices = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/notices');
+      const res = await axios.get('https://nexus-lib-1.onrender.com/api/notices');
       setNotices(res.data);
     } catch (err) {
       console.error(err);
@@ -49,7 +49,7 @@ export default function Dashboard() {
   const confirmReturn = async () => {
     setIsReturning(true);
     try {
-      await axios.post(`http://localhost:8080/api/transactions/return/${returnTransactionId}?returnCondition=${encodeURIComponent(returnCondition)}`);
+      await axios.post(`https://nexus-lib-1.onrender.com/api/transactions/return/${returnTransactionId}?returnCondition=${encodeURIComponent(returnCondition)}`);
       setReturnTransactionId(null);
       fetchTransactions(); // refresh
     } catch (err) {

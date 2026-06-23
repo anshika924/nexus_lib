@@ -49,7 +49,7 @@ export default function Home() {
 
   const fetchBooks = async (query, categoryParam) => {
     try {
-      let url = `http://localhost:8080/api/books?`;
+      let url = `https://nexus-lib-1.onrender.com/api/books?`;
       if (query) url += `search=${encodeURIComponent(query)}&`;
       if (categoryParam && categoryParam !== 'All Categories') url += `category=${encodeURIComponent(categoryParam)}`;
       
@@ -67,7 +67,7 @@ export default function Home() {
     
     if (value.length > 1) {
       try {
-        const response = await axios.get(`http://localhost:8080/api/books?search=${encodeURIComponent(value)}`);
+        const response = await axios.get(`https://nexus-lib-1.onrender.com/api/books?search=${encodeURIComponent(value)}`);
         setSuggestions(response.data.slice(0, 10)); // Show up to 10 suggestions
         setShowSuggestions(true);
       } catch (err) {
@@ -103,7 +103,7 @@ export default function Home() {
     try {
       const amount = purchaseType === 'rent' ? 1.00 : 100.00;
       const finalEmail = userEmail || (user?.email || '');
-      await axios.post(`http://localhost:8080/api/transactions/issue?bookId=${selectedBook.id}&userId=${user.id}&borrowReason=${encodeURIComponent(borrowReason)}&phone=${encodeURIComponent(userPhone)}&email=${encodeURIComponent(finalEmail)}&transactionType=${purchaseType.toUpperCase()}&amount=${amount}`);
+      await axios.post(`https://nexus-lib-1.onrender.com/api/transactions/issue?bookId=${selectedBook.id}&userId=${user.id}&borrowReason=${encodeURIComponent(borrowReason)}&phone=${encodeURIComponent(userPhone)}&email=${encodeURIComponent(finalEmail)}&transactionType=${purchaseType.toUpperCase()}&amount=${amount}`);
       alert("Successfully processed transaction!");
       setIsBorrowing(false);
       setSelectedBook(null);

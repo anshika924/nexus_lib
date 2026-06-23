@@ -20,7 +20,7 @@ export default function Settings() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put(`http://localhost:8080/api/users/${user.id}`, { name, password });
+      await axios.put(`https://nexus-lib-1.onrender.com/api/users/${user.id}`, { name, password });
       alert("Credentials updated successfully!");
       setPassword('');
     } catch (err) {
@@ -33,7 +33,7 @@ export default function Settings() {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to permanently delete your account? This action cannot be undone.")) {
       try {
-        await axios.delete(`http://localhost:8080/api/users/${user.id}`);
+        await axios.delete(`https://nexus-lib-1.onrender.com/api/users/${user.id}`);
         alert("Account deleted.");
         logout();
       } catch (err) {

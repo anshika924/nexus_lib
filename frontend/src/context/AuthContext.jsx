@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/auth/login`, { email, password });
+      const response = await axios.post(`https://nexus-lib-1.onrender.com/api/auth/login`, { email, password });
       
       if (response.status === 200) {
         setUser(response.data);

@@ -24,7 +24,7 @@ export default function AdminPanel() {
 
   const fetchNotices = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/notices');
+      const res = await axios.get('https://nexus-lib-1.onrender.com/api/notices');
       setNotices(res.data);
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ export default function AdminPanel() {
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get('http://localhost:8080/api/transactions');
+      const res = await axios.get('https://nexus-lib-1.onrender.com/api/transactions');
       setTransactions(res.data);
     } catch (err) {
       console.error(err);
@@ -43,7 +43,7 @@ export default function AdminPanel() {
   const handlePostNotice = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/notices', {
+      await axios.post('https://nexus-lib-1.onrender.com/api/notices', {
         title,
         content,
         author: user.name
@@ -58,7 +58,7 @@ export default function AdminPanel() {
 
   const handleDeleteNotice = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/notices/${id}`);
+      await axios.delete(`https://nexus-lib-1.onrender.com/api/notices/${id}`);
       fetchNotices();
     } catch (err) {
       alert('Failed to delete notice.');
